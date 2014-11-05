@@ -103,8 +103,8 @@ include $(BUILD_HOST_EXECUTABLE)
 # symlinks to mtools
 #
 
-MTOOLS_SYMLINKS := $(addsuffix /$(HOST_EXECUTABLE_SUFFIX), $(addprefix $(HOST_OUT_EXECUTABLES)/,$(MTOOLS)))
-$(MTOOLS_SYMLINKS) : MTOOLS_BINARY := $(addsuffix /$(HOST_EXECUTABLE_SUFFIX),$(LOCAL_MODULE))
+MTOOLS_SYMLINKS := $(addsuffix $(HOST_EXECUTABLE_SUFFIX), $(addprefix $(HOST_OUT_EXECUTABLES)/,$(MTOOLS)))
+$(MTOOLS_SYMLINKS) : MTOOLS_BINARY := $(addsuffix $(HOST_EXECUTABLE_SUFFIX),$(LOCAL_MODULE))
 $(MTOOLS_SYMLINKS): $(LOCAL_INSTALLED_MODULE) $(LOCAL_PATH)/Android.mk
 	@echo "Symlink: $@ -> $<"
 	@mkdir -p $(dir $@)
