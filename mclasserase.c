@@ -44,6 +44,8 @@
 #include <unistd.h>
 #include <stdio.h>
 
+#define NUM_CYCLES	3	/* How many times we'll overwrite the media */
+
 /**
  * Prints the Usage Message to STDOUT<br>
  *
@@ -101,8 +103,7 @@ static void do_mclasserase(char drive,int debug)
   int icount=0;
   int iTotalErase = 0;
 
-  const int cycles = 3;		/* How many times we'll overwrite the media */
-  char odat[cycles];		/* Data for each overwrite procedure */
+  char odat[NUM_CYCLES];		/* Data for each overwrite procedure */
 
   /* Creating values for overwrite  */
   odat[0]=0xff;
@@ -111,7 +112,7 @@ static void do_mclasserase(char drive,int debug)
   
 
   if (debug == 1)
-     printf("cycles: %i, odats: %i,%i,%i\n",cycles,odat[0],odat[1],odat[2]);
+     printf("cycles: %i, odats: %i,%i,%i\n",NUM_CYCLES,odat[0],odat[1],odat[2]);
   
   
 
@@ -159,7 +160,7 @@ static void do_mclasserase(char drive,int debug)
   /*
    * Overwrite device
    */
-  for( i=0; i < cycles; i++){
+  for( i=0; i < NUM_CYCLES; i++){
 
      if (debug==1)
      {
